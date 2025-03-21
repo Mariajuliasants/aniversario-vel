@@ -1129,7 +1129,7 @@ body {
   animation-play-state: paused !important;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 300px) {
   .flowers {
     margin-left: 110px;
     margin-bottom: 50px;
