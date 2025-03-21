@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+ <html lang="pt-BR">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Medidor de Amor - Feliz Aniversário</title>
+   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="styles.css">
+ </head>
+ <body>
+   <div class="container" id="love-meter-page">
+     <div class="card">
+       <h2 class="title">O quanto você me ama?</h2>
+       
+       <div class="progress-container">
+         <div class="progress-bar">
+           <div id="progress-fill" class="progress-fill">
+             <span id="percentage">10%</span>
+           </div>
+         </div>
+       </div>
+       
+ 
+       
+       <div class="hearts-container">
+         <button id="whole-heart" class="heart-button">❤️</button>
+         <button id="broken-heart" class="heart-button">💔</button>
+       </div>
+     </div>
+   </div>
+ 
+   <script src="animations.js"></script>
+   <script>
+     document.addEventListener('DOMContentLoaded', function() {
+       let lovePercentage = 10;
+       const progressFill = document.getElementById('progress-fill');
+       const percentageText = document.getElementById('percentage');
+       
+       // Botão de coração inteiro
+       document.getElementById('whole-heart').addEventListener('click', function() {
+         lovePercentage = Math.min(100, lovePercentage + 10);
+         updateProgressBar();
+         
+         if (lovePercentage >= 100) {
+           setTimeout(function() {
+             window.location.href = 'quiz.html';
+           }, 500);
+         }
+       });
+       
+       // Botão de coração partido
+       document.getElementById('broken-heart').addEventListener('click', function() {
+         lovePercentage = Math.max(0, lovePercentage - 10);
+         updateProgressBar();
+       });
+       
+       function updateProgressBar() {
+         progressFill.style.width = lovePercentage + '%';
+         percentageText.textContent = lovePercentage + '%';
+       }
+       
+       // Inicializar barra de progresso
+       updateProgressBar();
+     });
+   </script>
+ </body>
+ </html>

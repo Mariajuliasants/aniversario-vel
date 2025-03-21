@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+ <html lang="pt-BR">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Feliz Aniversário, Minha Vel!</title>
+   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="pink-flower.css">
+ </head>
+ <body>
+   <div class="container" id="home-page">
+     <div id="flower-container"></div>
+     
+     <!-- Flores rosas -->
+     <div class="pink-flowers-container">
+       <div class="flower flower--1">
+         <div class="flower__leafs">
+           <div class="flower__leaf flower__leaf--1"></div>
+           <div class="flower__leaf flower__leaf--2"></div>
+           <div class="flower__leaf flower__leaf--3"></div>
+           <div class="flower__leaf flower__leaf--4"></div>
+           <div class="flower__white-circle"></div>
+         </div>
+         <div class="flower__line">
+           <div class="flower__line__leaf flower__line__leaf--1"></div>
+           <div class="flower__line__leaf flower__line__leaf--2"></div>
+           <div class="flower__line__leaf flower__line__leaf--3"></div>
+         </div>
+       </div>
+ 
+       <div class="flower flower--2">
+         <div class="flower__leafs">
+           <div class="flower__leaf flower__leaf--1"></div>
+           <div class="flower__leaf flower__leaf--2"></div>
+           <div class="flower__leaf flower__leaf--3"></div>
+           <div class="flower__leaf flower__leaf--4"></div>
+           <div class="flower__white-circle"></div>
+         </div>
+         <div class="flower__line">
+           <div class="flower__line__leaf flower__line__leaf--1"></div>
+           <div class="flower__line__leaf flower__line__leaf--2"></div>
+           <div class="flower__line__leaf flower__line__leaf--3"></div>
+         </div>
+       </div>
+ 
+       <div class="flower flower--3">
+         <div class="flower__leafs">
+           <div class="flower__leaf flower__leaf--1"></div>
+           <div class="flower__leaf flower__leaf--2"></div>
+           <div class="flower__leaf flower__leaf--3"></div>
+           <div class="flower__leaf flower__leaf--4"></div>
+           <div class="flower__white-circle"></div>
+         </div>
+         <div class="flower__line">
+           <div class="flower__line__leaf flower__line__leaf--1"></div>
+           <div class="flower__line__leaf flower__line__leaf--2"></div>
+           <div class="flower__line__leaf flower__line__leaf--3"></div>
+         </div>
+       </div>
+     </div>
+     
+     <div class="card">
+       <h1 class="title">Feliz Aniversário, Minha Vel!</h1>
+       <p class="message">Lembra da página que eu disse que era para uma empresa? Na verdade, era para você! Você merece!</p>
+
+       <div class="button-container">
+         <button id="yes-button" class="button button-primary">Clique aqui</button>
+         <button id="no-button" class="button button-secondary">Não tô afim, Fran</button>
+       </div>
+     </div>
+   </div>
+ 
+   <script src="animations.js"></script>
+   <script>
+     document.addEventListener('DOMContentLoaded', function() {
+       // Criar animação de flores
+       createFlowers();
+       
+       // Botão de sim
+       document.getElementById('yes-button').addEventListener('click', function() {
+         window.location.href = 'love-meter.html';
+       });
+       
+       // Botão de não que foge
+       const noButton = document.getElementById('no-button');
+       noButton.addEventListener('click', function() {
+         const x = Math.random() * 200 - 100;
+         const y = Math.random() * 200 - 100;
+         
+         noButton.style.transform = `translate(${x}px, ${y}px)`;
+       });
+       
+       // Efeito de pulsar no título
+       const title = document.querySelector('.title');
+       setInterval(function() {
+         title.classList.add('pulse');
+         setTimeout(function() {
+           title.classList.remove('pulse');
+         }, 1000);
+       }, 3000);
+     });
+   </script>
+ </body>
+ </html>

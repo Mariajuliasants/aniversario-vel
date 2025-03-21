@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+ <html lang="pt-BR">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Quiz - Feliz Aniversário</title>
+   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="styles.css">
+ </head>
+ <body>
+   <div class="container" id="quiz-page">
+     <div class="card">
+       <h2 class="title">Hora do Quiz!</h2>
+       
+       <p class="message">Qual data é nossa?</p>
+       
+       <div class="quiz-options">
+         <div class="quiz-option">
+           <input type="radio" id="option1" name="quiz" value="1">
+           <label for="option1">23/03/2024</label>
+         </div>
+         
+         <div class="quiz-option">
+           <input type="radio" id="option2" name="quiz" value="2">
+           <label for="option2">06/04/2024</label>
+         </div>
+         
+         <div class="quiz-option">
+           <input type="radio" id="option3" name="quiz" value="3">
+           <label for="option3">19/05/2024</label>
+         </div>
+       </div>
+       
+       <button id="check-answer" class="button button-primary">Verificar</button>
+     </div>
+   </div>
+   
+   <div id="error-modal" class="modal">
+     <div class="modal-content">
+       <h3>Resposta Incorreta</h3>
+       <p>Tente novamente!</p>
+       <button id="close-modal" class="button button-primary">OK</button>
+     </div>
+   </div>
+ 
+   <script src="animations.js"></script>
+   <script>
+     document.addEventListener('DOMContentLoaded', function() {
+       const correctAnswerIndex = "2"; // "Seu aniversário"
+       const errorModal = document.getElementById('error-modal');
+       const quizOptions = document.querySelectorAll('.quiz-option');
+       
+       // Botão de verificar resposta
+       document.getElementById('check-answer').addEventListener('click', function() {
+         const selectedOption = document.querySelector('input[name="quiz"]:checked');
+         
+         if (!selectedOption) {
+           alert("Por favor, selecione uma resposta!");
+           return;
+         }
+         
+         if (selectedOption.value === correctAnswerIndex) {
+           // Resposta correta
+           selectedOption.parentElement.classList.add('correct');
+           
+           setTimeout(function() {
+             window.location.href = 'birthday.html';
+           }, 1000);
+         } else {
+           // Resposta incorreta
+           errorModal.style.display = 'flex';
+         }
+       });
+       
+       // Fechar modal de erro
+       document.getElementById('close-modal').addEventListener('click', function() {
+         errorModal.style.display = 'none';
+       });
+       
+       // Fechar modal ao clicar fora dele
+       window.addEventListener('click', function(event) {
+         if (event.target === errorModal) {
+           errorModal.style.display = 'none';
+         }
+       });
+     });
+   </script>
+ </body>
+ </html>
